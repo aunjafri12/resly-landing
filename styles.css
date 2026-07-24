@@ -36,6 +36,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* Keeps anchor/scrollIntoView targets from landing underneath the fixed
+     site-nav bar — sized to comfortably clear the nav at any viewport. */
+  scroll-padding-top: 64px;
 }
 
 body {
@@ -43,6 +46,9 @@ body {
   font-family: var(--font-family);
   color: var(--ink);
   background: var(--bg-light);
+  /* Defensive guard: nothing in this layout should ever need to scroll
+     sideways, so make sure a stray element can't cause it. */
+  overflow-x: hidden;
 }
 
 img { max-width: 100%; }
@@ -66,11 +72,22 @@ a:hover {
   right: 0;
   z-index: 100;
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   gap: clamp(24px, 4vw, 36px);
   padding: 12px clamp(20px, 6vw, 64px);
   background: transparent;
   transition: background 300ms ease, backdrop-filter 300ms ease;
+  /* Safety net: if link labels ever get longer (translations, etc.) and
+     stop fitting even at the mobile font/gap sizes below, this lets the
+     bar scroll sideways instead of wrapping or breaking layout. */
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.site-nav::-webkit-scrollbar {
+  display: none;
 }
 
 .site-nav.is-scrolled {
@@ -80,17 +97,29 @@ a:hover {
 }
 
 .site-nav a {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
   color: #F3EDE6;
   opacity: 0.85;
   text-decoration: none;
+  white-space: nowrap;
   transition: opacity 200ms ease;
 }
 
 .site-nav a:hover {
   color: #F3EDE6;
   opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .site-nav {
+    gap: 14px;
+    padding: 12px 20px;
+  }
+
+  .site-nav a {
+    font-size: 0.75rem;
+  }
 }
 
 /* ============ Layout helpers ============ */
@@ -140,7 +169,7 @@ a:hover {
 }
 
 .body-copy {
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.6;
   color: var(--muted-dark);
   margin: 0;
@@ -150,7 +179,7 @@ a:hover {
 
 .badge {
   display: inline-block;
-  font-size: 12.5px;
+  font-size: 0.78125rem;
   font-weight: 600;
   letter-spacing: 0.01em;
   padding: 8px 16px;
@@ -177,7 +206,7 @@ a:hover {
   color: var(--cta-text);
   font-weight: 700;
   padding: 14px 28px;
-  font-size: 16.5px;
+  font-size: 1.03125rem;
   transition: transform 200ms ease, background 200ms ease, box-shadow 200ms ease;
 }
 
@@ -350,7 +379,7 @@ a:hover {
 }
 
 .stat-sub {
-  font-size: 14.5px;
+  font-size: 0.90625rem;
   line-height: 1.4;
   color: var(--muted-light);
   margin: 0;
@@ -385,7 +414,7 @@ a:hover {
 }
 
 .step-label {
-  font-size: 16.5px;
+  font-size: 1.03125rem;
   font-weight: 700;
   margin: 0;
   max-width: 240px;
@@ -421,7 +450,7 @@ a:hover {
 }
 
 .showcase-caption {
-  font-size: 14.5px;
+  font-size: 0.90625rem;
   color: var(--muted-light);
   text-align: center;
   margin: 0;
@@ -443,20 +472,20 @@ a:hover {
 }
 
 .quote-text {
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 1.55;
   font-style: italic;
   margin: 0 0 16px;
 }
 
 .quote-name {
-  font-size: 13.5px;
+  font-size: 0.84375rem;
   font-weight: 700;
   margin: 0 0 2px;
 }
 
 .quote-sub {
-  font-size: 12.5px;
+  font-size: 0.78125rem;
   color: var(--muted-light);
   margin: 0;
 }
@@ -482,7 +511,7 @@ a:hover {
 }
 
 .waitlist-footnote {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--muted-light);
   margin-top: 20px;
 }
@@ -506,19 +535,19 @@ a:hover {
 }
 
 .footer-line {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--muted-light);
   margin: 0;
   max-width: 420px;
 }
 
 .footer-email {
-  font-size: 13.5px;
+  font-size: 0.84375rem;
   font-weight: 600;
 }
 
 .footer-copyright {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: var(--muted-light);
   margin: 4px 0 0;
 }
@@ -553,12 +582,20 @@ a:hover {
   max-width: 340px;
   text-align: center;
   padding: 13px 20px;
-  font-size: 15.5px;
+  font-size: 0.96875rem;
   box-shadow: 0 12px 28px -10px rgba(193, 97, 63, 0.5);
 }
 
 @media (min-width: 760px) {
   .sticky-cta { display: none; }
+}
+
+@media (max-width: 759px) {
+  /* Extra clearance so the footer's copyright line doesn't end up
+     permanently hidden behind the fixed sticky "Join Waitlist" bar. */
+  .footer {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+  }
 }
 
 /* ============ Scroll fade-in ============ */
@@ -586,7 +623,7 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 600;
   text-align: center;
   padding: 12px;
@@ -606,7 +643,7 @@ a:hover {
   width: 28px;
   height: 28px;
   aspect-ratio: auto;
-  font-size: 8px;
+  font-size: 0.5rem;
   padding: 0;
   border-radius: 6px;
 }
