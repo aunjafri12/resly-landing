@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D97B54"/>
+      <stop offset="100%" stop-color="#A8472C"/>
+    </linearGradient>
+    <linearGradient id="gtext" x1="0" y1="0" x2="1" y2="0.6">
+      <stop offset="0%" stop-color="#D97B54"/>
+      <stop offset="100%" stop-color="#A8472C"/>
+    </linearGradient>
+    <style>
+      .word { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 320px; letter-spacing: -14px; fill: url(#gtext); }
+    </style>
+  </defs>
+  <!-- R mark scaled to match cap height of "esly" -->
+  <g transform="translate(30,50) scale(0.72)">
+    <path fill="url(#g)" fill-rule="evenodd" d="
+      M148 96 h132 a104 104 0 0 1 60 189
+      l58 131 a10 10 0 0 1 -9 14 h-56 a12 12 0 0 1 -11 -7
+      l-52 -117 h-52 v113 a11 11 0 0 1 -11 11 h-59 a11 11 0 0 1 -11 -11
+      v-312 a11 11 0 0 1 11 -11 z
+      M218 166 v82 h60 a41 41 0 0 0 0 -82 z
+    "/>
+    <path fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" d="
+      M158 340 L196 340 L212 312 L232 372 L252 328 L272 352 L306 352
+    "/>
+  </g>
+  <text x="300" y="330" class="word">esly</text>
+</svg>

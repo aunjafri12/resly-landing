@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Resly — AI-Drafted Progress Notes for Residents</title>
+<meta name="description" content="The only documentation tool built for inpatient residents">
+<meta property="og:title" content="Resly — AI-Drafted Progress Notes for Residents">
+<meta property="og:description" content="The only documentation tool built for inpatient residents">
+<meta property="og:image" content="images/screenshot-note-vitals.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="styles.css?v=14">
+<script>
+  // Real assets aren't dropped in yet. Registered here (capture phase, in <head>)
+  // so it catches image load errors that fire before script.js loads at the
+  // bottom of the page. Once real files replace the placeholders, this stops firing.
+  document.addEventListener('error', function (e) {
+    var img = e.target;
+    if (!img || img.tagName !== 'IMG' || !img.classList.contains('placeholder-img')) return;
+    var box = document.createElement('div');
+    box.className = img.className.replace('placeholder-img', '').trim();
+    box.classList.add('img-placeholder-box');
+    box.textContent = img.getAttribute('data-placeholder-label') || 'IMAGE';
+    var ratio = img.getAttribute('data-placeholder-ratio');
+    if (ratio) box.style.aspectRatio = '100 / ' + ratio;
+    img.replaceWith(box);
+  }, true);
+</script>
+</head>
+<body>
+
+<!-- ============ SITE NAV ============ -->
+<nav class="site-nav" id="site-nav">
+  <a href="#stats">Why Resly?</a>
+  <a href="#how-it-works">How it Works?</a>
+  <a href="#quotes">Reviews</a>
+  <a href="#waitlist">Access</a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-inner">
+    <img class="hero-logo placeholder-img" src="images/resly-wordmark-terracotta.svg?v=2" alt="Resly" data-placeholder-label="LOGO HERE">
+
+    <div class="hero-row">
+      <div class="hero-text">
+        <span class="badge">The only documentation tool built for inpatient residents</span>
+        <h1>AI-Drafted Progress Notes for Medical Residents</h1>
+        <p class="subhead">Open on your phone. Select your patient. Get a structured SOAP note in seconds. Review, edit, post to Epic.</p>
+        <a href="#waitlist" class="btn btn-primary">Join the Waitlist</a>
+      </div>
+
+      <div class="hero-phone">
+        <div class="phone-mockup" data-parallax="hero">
+          <div class="phone-screen hero-carousel" id="hero-carousel">
+            <img class="carousel-slide placeholder-img" src="images/shot-login.png?v=3" alt="Resly sign in screen" data-placeholder-label="SCREENSHOT: Login">
+            <img class="carousel-slide placeholder-img" src="images/screenshot-patients.png?v=3" alt="Patient list" data-placeholder-label="SCREENSHOT: Patient List">
+            <img class="carousel-slide placeholder-img is-active" src="images/screenshot-anp.png?v=3" alt="Structured progress note, Assessment and Plan view" data-placeholder-label="SCREENSHOT: A&amp;P Problem Cards">
+            <img class="carousel-slide placeholder-img" src="images/screenshot-dictate.png?v=3" alt="Voice dictation listening screen" data-placeholder-label="SCREENSHOT: Listening…">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ PROBLEM STATS ============ -->
+<section class="section section-light fade-section" id="stats">
+  <div class="section-inner max-1000">
+    <h2 class="section-heading center">Documentation is broken for residents</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number" data-stat="hours" data-target="3" data-final="2–3 hrs/day">0</div>
+        <p class="stat-sub">spent on clinical documentation</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-stat="ratio" data-target="2" data-final="2:1 ratio">0:1</div>
+        <p class="stat-sub">2 hours of EHR work for every 1 hour of patient care</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">0 tools</div>
+        <p class="stat-sub">built specifically for inpatient residents</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section section-tint fade-section" id="how-it-works">
+  <div class="section-inner max-1000">
+    <h2 class="section-heading center">How Resly Works</h2>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="icon-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+        </div>
+        <p class="step-label">Select your patient</p>
+      </div>
+      <div class="step-card">
+        <div class="icon-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M12 3l1.9 4.9L19 9.8l-4.9 1.9L12 16.6l-1.9-4.9L5 9.8l4.9-1.9L12 3z"></path><path d="M5 3v3M3 5h3M18 15v3M16.5 16.5h3"></path></svg>
+        </div>
+        <p class="step-label">AI drafts a structured note from chart data</p>
+      </div>
+      <div class="step-card">
+        <div class="icon-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <p class="step-label">Review, edit, and post — done before rounds</p>
+      </div>
+    </div>
+
+    <div class="secondary-phone-wrap">
+      <div class="phone-mockup phone-secondary" data-parallax="secondary">
+        <div class="phone-screen">
+          <img class="placeholder-img" src="images/screenshot-anp.png?v=3" alt="Assessment and plan problem cards" data-placeholder-label="SCREENSHOT: A&amp;P Problem Cards" data-placeholder-ratio="217">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCREENSHOTS SHOWCASE ============ -->
+<section class="section section-light fade-section" id="showcase">
+  <div class="section-inner max-1080">
+    <h2 class="section-heading center">Built for how residents actually work</h2>
+    <div class="showcase-grid">
+      <div class="showcase-card">
+        <div class="phone-mockup phone-showcase" data-parallax="showcase">
+          <div class="phone-screen">
+            <img class="placeholder-img" src="images/screenshot-patients.png?v=3" alt="Patient list" data-placeholder-label="SCREENSHOT: Patient List" data-placeholder-ratio="217">
+          </div>
+        </div>
+        <p class="showcase-caption">Numerous patients, one tap each</p>
+      </div>
+      <div class="showcase-card">
+        <div class="phone-mockup phone-showcase" data-parallax="showcase">
+          <div class="phone-screen">
+            <img class="placeholder-img" src="images/screenshot-dictate.png?v=3" alt="Voice dictation listening screen" data-placeholder-label="SCREENSHOT: Listening…" data-placeholder-ratio="217">
+          </div>
+        </div>
+        <p class="showcase-caption">Dictate exam findings at the bedside</p>
+      </div>
+      <div class="showcase-card">
+        <div class="phone-mockup phone-showcase" data-parallax="showcase">
+          <div class="phone-screen">
+            <img class="placeholder-img" src="images/screenshot-icd.png?v=3" alt="ICD-10 problem search" data-placeholder-label="SCREENSHOT: ICD-10 Search" data-placeholder-ratio="217">
+          </div>
+        </div>
+        <p class="showcase-caption">Add problems with ICD-10 codes</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOCIAL PROOF / QUOTES (hideable) ============ -->
+<section class="section section-tint fade-section" id="quotes" data-section-flag="quotes">
+  <div class="section-inner max-1000">
+    <h2 class="section-heading center">What residents are saying</h2>
+    <div class="quotes-grid">
+      <div class="quote-card">
+        <p class="quote-text">"Add a resident quote here."</p>
+        <p class="quote-name">First L.</p>
+        <p class="quote-sub">PGY level · Specialty</p>
+      </div>
+      <div class="quote-card">
+        <p class="quote-text">"Add a resident quote here."</p>
+        <p class="quote-name">First L.</p>
+        <p class="quote-sub">PGY level · Specialty</p>
+      </div>
+      <div class="quote-card">
+        <p class="quote-text">"Add a resident quote here."</p>
+        <p class="quote-name">First L.</p>
+        <p class="quote-sub">PGY level · Specialty</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT'S NEXT ============ -->
+<section class="section section-dark fade-section" id="whats-next">
+  <div class="section-inner max-640 center-text">
+    <span class="badge badge-dark">What's next</span>
+    <h3 class="section-heading-sm">Progress notes are just the beginning</h3>
+    <p class="body-copy">Resly is building toward a single tool for everything residents deal with day to day — from documentation to handoffs to case logs. Progress notes are our first release. More is coming.</p>
+  </div>
+</section>
+
+<!-- ============ WAITLIST ============ -->
+<section class="section section-light fade-section" id="waitlist">
+  <div class="section-inner max-560 center-text">
+    <h2 class="section-heading">Get Early Access</h2>
+    <p class="subhead-sm">Join 30+ residents already on the waitlist</p>
+
+    <div class="waitlist-card">
+      <iframe
+        data-tally-src="https://tally.so/embed/Meqral?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+        loading="lazy"
+        width="100%"
+        height="400"
+        title="Resly waitlist form"
+        style="border:none; display:block;">
+      </iframe>
+    </div>
+
+    <p class="waitlist-footnote">We'll never spam you. Early access invites only.</p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <img class="footer-logo placeholder-img" src="images/resly-icon-terracotta.svg?v=2" alt="Resly" data-placeholder-label="R">
+  <p class="footer-line">Built by a team that lives with the documentation burden</p>
+  <a class="footer-email" href="mailto:hello@resly.app">hello@resly.app</a>
+  <p class="footer-copyright">© 2026 Resly. All rights reserved.</p>
+</footer>
+
+<!-- ============ STICKY MOBILE CTA ============ -->
+<div class="sticky-cta" id="sticky-cta">
+  <a href="#waitlist" class="btn btn-primary btn-sticky">Join Waitlist</a>
+</div>
+
+<script src="script.js?v=5"></script>
+<script>
+  // Tally's standard lazy-load loader: swaps data-tally-src onto src once
+  // the widget script is ready, and handles dynamicHeight resize messages.
+  (function (d) {
+    var w = "https://tally.so/widgets/embed.js";
+    var load = function () {
+      if (typeof Tally !== "undefined") {
+        Tally.loadEmbeds();
+      } else {
+        d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function (e) {
+          e.src = e.dataset.tallySrc;
+        });
+      }
+    };
+    if (typeof Tally !== "undefined") {
+      load();
+    } else if (d.querySelector('script[src="' + w + '"]') == null) {
+      var s = d.createElement("script");
+      s.src = w;
+      s.onload = load;
+      s.onerror = load;
+      d.body.appendChild(s);
+    }
+  })(document);
+</script>
+</body>
+</html>

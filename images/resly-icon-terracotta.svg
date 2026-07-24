@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D97B54"/>
+      <stop offset="100%" stop-color="#A8472C"/>
+    </linearGradient>
+  </defs>
+  <!-- Solid rounded R glyph, custom drawn as a single path -->
+  <path fill="url(#g)" d="
+    M148 96
+    h132
+    a104 104 0 0 1 60 189
+    l58 131
+    a10 10 0 0 1 -9 14
+    h-56
+    a12 12 0 0 1 -11 -7
+    l-52 -117
+    h-52
+    v113
+    a11 11 0 0 1 -11 11
+    h-59
+    a11 11 0 0 1 -11 -11
+    v-312
+    a11 11 0 0 1 11 -11
+    z
+    M218 166
+    v82
+    h60
+    a41 41 0 0 0 0 -82
+    z
+  " fill-rule="evenodd"/>
+  <!-- Pulse waveform cut through the lower stem area (white ink) -->
+  <path fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" d="
+    M158 340
+    L196 340
+    L212 312
+    L232 372
+    L252 328
+    L272 352
+    L306 352
+  "/>
+</svg>
