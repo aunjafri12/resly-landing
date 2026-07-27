@@ -83,6 +83,48 @@
     requestAnimationFrame(tick);
   }
 
+  /* ============ Waitlist pill counter ============ */
+  var quotesSectionEl = document.getElementById('quotes');
+  if (quotesSectionEl) {
+    var pillObserver = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateWaitlistPill();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    pillObserver.observe(quotesSectionEl);
+  }
+
+  function animateWaitlistPill() {
+    var counterEl = document.querySelector('.waitlist-pill-count[data-target]');
+    if (!counterEl) return;
+
+    var target = parseInt(counterEl.getAttribute('data-target'), 10);
+    var duration = 1400;
+    var startTime = null;
+
+    function easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    function tick(timestamp) {
+      if (startTime === null) startTime = timestamp;
+      var linearProgress = Math.min((timestamp - startTime) / duration, 1);
+      var eased = easeOutCubic(linearProgress);
+      counterEl.textContent = Math.round(eased * target);
+
+      if (linearProgress < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        counterEl.textContent = target;
+      }
+    }
+
+    requestAnimationFrame(tick);
+  }
+
   /* ============ Hero screenshot carousel (3D card flip) ============ */
   var carousel = document.getElementById('hero-carousel');
   if (carousel) {
